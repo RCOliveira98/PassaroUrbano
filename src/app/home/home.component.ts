@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     // this.myOffers = this.offersService.getOffersAll();
-    this.offersService.getOffersAllPromisse().then(
+    this.offersService.getOffersSpotlight().then(
       (params_ofertas: OfertaModel[]) => {this.myOffers = params_ofertas}
     ).catch(
       (params_erro_ofertas: any) => {alert(params_erro_ofertas)}

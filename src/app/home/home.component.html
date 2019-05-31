@@ -10,7 +10,7 @@
   <div class="row my-space">
     <div class="col-sm-4" *ngFor='let offer of myOffers'>
       <div class="card">
-        <img class="card-img-top" [src]='offer.images[0].url'>
+        <img class="card-img-top" [src]='offer.images[0].url' class='img-fluid'>
         <div class="card-block">
           <h4 class="card-title">{{offer.title}}</h4>
           <p class="card-text">{{offer.description}}</p>

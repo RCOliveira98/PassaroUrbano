@@ -10,6 +10,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FunComponent } from './fun/fun.component';
 import { RestaurantComponent } from './restaurant/restaurant.component';
 
+// import { OfertasService } from './ofertas.service';
+
 @NgModule({
   declarations: [
     AppComponent,

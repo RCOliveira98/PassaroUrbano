@@ -9,6 +9,7 @@ import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FunComponent } from './fun/fun.component';
 import { RestaurantComponent } from './restaurant/restaurant.component';
+import { OfferComponent } from './offer/offer.component';
 
 // import { OfertasService } from './ofertas.service';
 
@@ -19,7 +20,8 @@ import { RestaurantComponent } from './restaurant/restaurant.component';
     FooterComponent,
     NavbarComponent,
     FunComponent,
-    RestaurantComponent
+    RestaurantComponent,
+    OfferComponent
   ],
   imports: [
     BrowserModule,

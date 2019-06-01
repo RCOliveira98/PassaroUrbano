@@ -8,11 +8,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { FunComponent } from './fun/fun.component';
 import { RestaurantComponent } from './restaurant/restaurant.component';
+import { OfferComponent } from './offer/offer.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'fun', component: FunComponent},
-  {path: 'restaurant', component: RestaurantComponent}
+  {path: 'restaurant', component: RestaurantComponent},
+  {path: 'offer', component: HomeComponent},
+  {path: 'offer/:id', component: OfferComponent}
 ];
 
 @NgModule({

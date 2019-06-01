@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container my-space">
 
   <div class="secao">
     <h3 class="text-center">Rodízios, Buffet, Carnes Especiais, Feijoada e mais!</h3>
@@ -7,31 +7,34 @@
 
   <hr />
 
-  <div class="row" *ngFor="let restaurant of myRestaurants">
-    <div class="col-md-4">
-      <img [src]="restaurant.images[0].url" class='img-fluid' />
+  <div>
+    <div class="row my-space" *ngFor="let restaurant of myRestaurants">
+      <div class="col-md-4">
+        <img [src]="restaurant.images[0].url" class='img-fluid' />
+      </div>
+
+      <div class="col-md-8">
+        <div class="row">
+          <h4>{{restaurant.title}}</h4>
+        </div>
+
+        <div class="row">
+          <h5>{{restaurant.description}}</h5>
+        </div>
+
+        <div class="row">
+          <p>Anunciado por: <b>{{restaurant.advertiser}}</b></p>
+        </div>
+
+        <div class="row">
+          <p>R$ {{restaurant.price}}</p>
+        </div>
+
+        <div class="row">
+          <button class="btn btn-outline-success" [routerLink]="['/offer/', restaurant.id]">Ver oferta</button>
+        </div>
+      </div>
     </div>
 
-    <div class="col-md-8">
-      <div class="row">
-        <h4>{{restaurant.title}}</h4>
-      </div>
-
-      <div class="row">
-        <h5>{{restaurant.description}}</h5>
-      </div>
-
-      <div class="row">
-        <p>Anunciado por: <b>{{restaurant.advertiser}}</b></p>
-      </div>
-
-      <div class="row">
-        <p>R$ {{restaurant.price}}</p>
-      </div>
-
-      <div class="row">
-        <button class="btn btn-outline-success">Ver oferta</button>
-      </div>
-    </div>
   </div>
 </div>

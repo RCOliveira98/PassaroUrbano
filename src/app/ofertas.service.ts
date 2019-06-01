@@ -14,8 +14,10 @@ export class OfertasService {
   constructor(private httpService: HttpClient) {}
 
    // retorna a oferta solicitada, caso ela não exista, retornará o valor de null
-   public getOffersById(id: number): OfertaModel {
-     return this.offers[id] != null ? this.offers[id] : null;
+   public getOffersById(id: number): Promise<OfertaModel> {
+     return this.httpService.get(`http://localhost:3000/ofertas/${id}`).toPromise()
+     .then((response: OfertaModel) => response)
+     .catch((respose: any) => respose);
    }
 
    // consume a nossa API fake para retornar todas as ofertas

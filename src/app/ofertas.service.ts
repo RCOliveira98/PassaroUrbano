@@ -45,9 +45,16 @@ export class OfertasService {
    }
 
    // consume a nossa api fake e retorna o conteúdo da tab de ofertas selecionada.
-   public getContent(id: number): Promise<string> {
+   public getContentHowToUse(id: number): Promise<string> {
      return this.httpService.get(`${urlApi}/como-usar?id=${id}`).toPromise()
      .then((response: any) => response[0].description)
      .catch((response: any) => response);
+   }
+
+   // consume a nossa api fake e retorna o conteúdo da tab de ofertas selecionada.
+   public getContentWhereToFind(id: number): Promise<string> {
+     return this.httpService.get(`${urlApi}/onde-fica?id=${id}`).toPromise()
+                            .then((response: any) => response[0].description)
+                            .catch((response: any) => response);
    }
 }

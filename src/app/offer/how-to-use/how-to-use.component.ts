@@ -22,9 +22,9 @@ export class HowToUseComponent implements OnInit {
   }
 
   ngOnInit() {
-    return this.myService.getContent(this.retrievesParameters())
+    return this.myService.getContentHowToUse(this.retrievesParameters())
                   .then((response: string) => this.content = response)
-                  .catch((response: any) => alert(response));
+                  .catch((response: any) => alert('Erro: ' + response));
   }
 
 }

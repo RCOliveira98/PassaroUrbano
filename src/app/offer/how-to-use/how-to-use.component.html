@@ -1,0 +1,7 @@
+<p *ngIf='content != undefined; else loadP'>
+  {{content}}
+</p>
+
+<ng-template #loadP>
+  <p>Carregando ...</p>
+</ng-template>

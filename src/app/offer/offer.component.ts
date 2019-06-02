@@ -17,13 +17,13 @@ export class OfferComponent implements OnInit {
               private servOffer: OfertasService) { }
 
 
-              private getParams(): number {
-                const date = 'id';
-                return this.roteador.snapshot.params[date];
-              }
+  private getParams(): number {
+    const date = 'id';
+    return this.roteador.snapshot.params[date];
+  }
   ngOnInit() {
     const id = this.getParams();
-    return this.servOffer.getOffersById(id).then((response: OfertaModel) => {this.currentOffer = response})
+    return this.servOffer.getOffersById(id).then((response: OfertaModel) => this.currentOffer = response)
     .catch((response: any) => console.log(response));
   }
 

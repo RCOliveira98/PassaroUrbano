@@ -10,6 +10,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FunComponent } from './fun/fun.component';
 import { RestaurantComponent } from './restaurant/restaurant.component';
 import { OfferComponent } from './offer/offer.component';
+import { HowToUseComponent } from './offer/how-to-use/how-to-use.component';
+import { WhereToFindComponent } from './offer/where-to-find/where-to-find.component';
 
 // import { OfertasService } from './ofertas.service';
 
@@ -21,7 +23,9 @@ import { OfferComponent } from './offer/offer.component';
     NavbarComponent,
     FunComponent,
     RestaurantComponent,
-    OfferComponent
+    OfferComponent,
+    HowToUseComponent,
+    WhereToFindComponent
   ],
   imports: [
     BrowserModule,

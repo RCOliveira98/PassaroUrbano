@@ -25,6 +25,13 @@ export class OfferComponent implements OnInit {
     const id = this.getParams();
     return this.servOffer.getOffersById(id).then((response: OfertaModel) => this.currentOffer = response)
     .catch((response: any) => console.log(response));
+    /*
+    this.roteador.params.subscribe((parametro: any) => {
+      console.log(parametro);
+    },
+    (erro: any) => console.log(erro),
+    () => console.log('okkkkkk'));
+    */
   }
 
 }

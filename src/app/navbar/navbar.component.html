@@ -1,26 +1,37 @@
 <div class="fixed-top">
-  <nav class="navbar navbar-light bg-faded">
-    <div class="container">
-      <a [routerLink]="['']" class="navbar-brand">
-        <img src="/assets/logo.png" class='img-fluid' />
-      </a>
-      <a a href="#"><img src="/assets/carrinho.png" class='img-fluid' /></a>
+    <nav class="navbar navbar-light bg-faded">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <a [routerLink]="['']" class="navbar-brand">
+                        <img src="/assets/logo.png" class='img-fluid' />
+                    </a>
+                </div>
+                <div class="col-md-6">
+                    <input type="text" name="pesquisa" id="txtPesquisa" placeholder="Pesquise por ofertas" class='my-form form-control'>
+                </div>
+                <div class="col-md-2">
+                    <a a href="#"><img src="/assets/carrinho.png" class='img-fluid' /></a>
+                </div>
+            </div>
+
+
+        </div>
+    </nav>
+    <div class="menu">
+        <div class="container">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/restaurant']" [routerLinkActive]="['active']">Restaurantes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/fun']" [routerLinkActive]="['active']">Diversão</a>
+                </li>
+            </ul>
+        </div>
     </div>
-  </nav>
-  <div class="menu">
-    <div class="container">
-      <ul class="nav">
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/restaurant']" [routerLinkActive]="['active']">Restaurantes</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/fun']" [routerLinkActive]="['active']">Diversão</a>
-        </li>
-      </ul>
-    </div>
-  </div>
 </div>
 
 <div class="banner">
-  <img src="/assets/banners/img_1.jpg" />
+    <img src="/assets/banners/img_1.jpg" />
 </div>

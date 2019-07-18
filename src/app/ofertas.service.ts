@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { OfertaModel } from './shared/oferta.model';
 import { urlApi } from './shared/app.api';
@@ -56,5 +57,11 @@ export class OfertasService {
      return this.httpService.get(`${urlApi}/onde-fica?id=${id}`).toPromise()
                             .then((response: any) => response[0].description)
                             .catch((response: any) => response);
+   }
+
+   // pesquisa de ofertas by categoria
+   public getSearchOffers(item: string): Observable<OfertaModel[]> {
+     return this.httpService.get(`${urlApi}/ofertas?category=${item}`)
+     .pipe(map((res: any) => res.json()));
    }
 }

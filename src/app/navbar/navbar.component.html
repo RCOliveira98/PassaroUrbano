@@ -8,7 +8,7 @@
                     </a>
                 </div>
                 <div class="col-md-6">
-                    <input type="text" name="pesquisa" id="txtPesquisa" placeholder="Pesquise por ofertas" class='my-form form-control'>
+                    <input #stringSearch type="text" placeholder="Pesquise por ofertas" class='my-form form-control' (blur)="mySearchOffer(stringSearch.value);">
                 </div>
                 <div class="col-md-2">
                     <a a href="#"><img src="/assets/carrinho.png" class='img-fluid' /></a>

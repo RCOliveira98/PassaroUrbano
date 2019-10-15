@@ -1,7 +1,10 @@
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Observable, Subscription, Subject } from 'rxjs';
+import { switchMap, debounceTime } from 'rxjs/operators';
+
 import { OfertaModel } from './../shared/oferta.model';
-import { Observable } from 'rxjs';
+
 import { OfertasService } from './../ofertas.service';
-import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
@@ -9,20 +12,50 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css'],
   providers: [OfertasService]
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, OnDestroy {
+
+  public ofertas: Observable<OfertaModel[]>;
+  public inscricao: Subscription;
+  private subject: Subject<string>;
 
   constructor(private ofertaService: OfertasService) { }
 
-  public ofertas: Observable<OfertaModel[]>;
   ngOnInit() {
-  }
+    this.subject = new Subject<string>();
+    this.ofertas = this.subject.pipe(
+      debounceTime(1000),
+      switchMap((busca: string) => {
+        console.log('requisição http');
+        return this.ofertaService.getSearchOffers(busca);
+      })
+    );
 
-  mySearchOffer(search: string): void {
-    this.ofertas = this.ofertaService.getSearchOffers(search);
-    this.ofertas.subscribe(
-      (success: OfertaModel[]) => console.log(success),
-      (err: any) => console.log(err)
+    this.inscricao = this.ofertas.subscribe(
+      (ofertas: OfertaModel[]) => console.log(ofertas)
     );
   }
 
+  ngOnDestroy() {
+    if (this.inscricao) {
+      this.inscricao.unsubscribe();
+    }
+  }
+
+  mySearchOffer(search: string): void {
+    console.log('pesquisando...');
+    if (search.trim() === '') {
+      console.error('String vazia!');
+    } else {
+      this.subject.next(search);
+    }
+  }
+
 }
+
+/*
+this.ofertas = this.ofertaService.getSearchOffers(search);
+      this.inscricao = this.ofertas.subscribe(
+        (success: OfertaModel[]) => console.log(success),
+        (err: any) => console.log(err)
+      );
+*/

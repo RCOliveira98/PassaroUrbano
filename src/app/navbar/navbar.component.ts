@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable, Subscription, Subject } from 'rxjs';
-import { switchMap, debounceTime } from 'rxjs/operators';
+import { switchMap, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 import { OfertaModel } from './../shared/oferta.model';
 
@@ -15,6 +15,7 @@ import { OfertasService } from './../ofertas.service';
 export class NavbarComponent implements OnInit, OnDestroy {
 
   public ofertas: Observable<OfertaModel[]>;
+  public ofertasSearch: OfertaModel[];
   public inscricao: Subscription;
   private subject: Subject<string>;
 
@@ -22,16 +23,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.subject = new Subject<string>();
-    this.ofertas = this.subject.pipe(
-      debounceTime(1000),
-      switchMap((busca: string) => {
-        console.log('requisição http');
-        return this.ofertaService.getSearchOffers(busca);
-      })
-    );
-
+    this.setOfertas();
     this.inscricao = this.ofertas.subscribe(
-      (ofertas: OfertaModel[]) => console.log(ofertas)
+      (ofertas: OfertaModel[]) => this.ofertasSearch = ofertas
     );
   }
 
@@ -48,6 +42,17 @@ export class NavbarComponent implements OnInit, OnDestroy {
     } else {
       this.subject.next(search);
     }
+  }
+
+  private setOfertas() {
+    this.ofertas = this.subject.pipe(
+      debounceTime(1000),
+      distinctUntilChanged(),
+      switchMap((busca: string) => {
+        console.log('requisição http');
+        return this.ofertaService.getSearchOffers(busca);
+      })
+    );
   }
 
 }

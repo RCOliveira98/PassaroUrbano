@@ -26,3 +26,7 @@
 .my-form {
     margin-top: 5px;
 }
+
+.list-group {
+    position: absolute;
+}

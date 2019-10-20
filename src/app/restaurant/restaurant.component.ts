@@ -21,7 +21,10 @@ export class RestaurantComponent implements OnInit {
 
   public loadOffersRestaurant(): void {
     this.servRestaurant.getOffersByCategory('restaurante')
-    .then((returnPromise: OfertaModel[]) => this.myRestaurants = returnPromise)
+    .then((returnPromise: OfertaModel[]) => {
+      this.myRestaurants = returnPromise;
+      console.log(this.myRestaurants);
+    })
     .catch((returnPromise: OfertaModel[]) => alert('Problemas com a base de dados'));
   }
 

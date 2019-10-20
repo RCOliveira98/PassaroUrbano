@@ -1,9 +1,9 @@
 h5 {
-    color:#999
+    color: #999
 }
 
 h4 {
-    color:#555
+    color: #555
 }
 
 h3 {
@@ -25,4 +25,6 @@ h3 {
     font-size: 20px
 }
 
-.my-space{margin-bottom: 10px;}
+.my-space {
+    margin-bottom: 10px;
+}

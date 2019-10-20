@@ -16,22 +16,18 @@ export class OfferComponent implements OnInit {
   constructor(private roteador: ActivatedRoute,
               private servOffer: OfertasService) { }
 
+  ngOnInit() {
+    const id = this.getParams();
+    return this.servOffer.getOffersById(id).then((response: OfertaModel) => {
+      this.currentOffer = response;
+      console.log(this.currentOffer);
+    })
+    .catch((response: any) => console.log(response));
+  }
 
   private getParams(): number {
     const date = 'id';
     return this.roteador.snapshot.params[date];
-  }
-  ngOnInit() {
-    const id = this.getParams();
-    return this.servOffer.getOffersById(id).then((response: OfertaModel) => this.currentOffer = response)
-    .catch((response: any) => console.log(response));
-    /*
-    this.roteador.params.subscribe((parametro: any) => {
-      console.log(parametro);
-    },
-    (erro: any) => console.log(erro),
-    () => console.log('okkkkkk'));
-    */
   }
 
 }

@@ -2,6 +2,10 @@
     background: rgb(3, 24, 44)
 }
 
+.navbar {
+    background-color: #FFF;
+}
+
 .nav-link {
     color: #C1E4FF
 }

@@ -32,7 +32,6 @@ import { WhereToFindComponent } from './offer/where-to-find/where-to-find.compon
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

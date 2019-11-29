@@ -1,3 +1,4 @@
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
@@ -15,6 +16,8 @@ import { WhereToFindComponent } from './offer/where-to-find/where-to-find.compon
 
 // import { OfertasService } from './ofertas.service';
 
+import { Describer } from './util/describer.pipe';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +28,8 @@ import { WhereToFindComponent } from './offer/where-to-find/where-to-find.compon
     RestaurantComponent,
     OfferComponent,
     HowToUseComponent,
-    WhereToFindComponent
+    WhereToFindComponent,
+    Describer
   ],
   imports: [
     BrowserModule,

@@ -10,7 +10,7 @@
                 <div class="col-md-6">
                     <input #stringSearch type="text" placeholder="Pesquise por ofertas" class='my-form form-control' (keyup)="mySearchOffer(stringSearch.value);">
                     <ul class="list-group">
-                        <li class="list-group-item" *ngFor="let offer of ofertasSearch">{{offer.title}}</li>
+                        <li class="list-group-item" *ngFor="let offer of ofertasSearch">{{offer.title | describer}}</li>
                     </ul>
                 </div>
 

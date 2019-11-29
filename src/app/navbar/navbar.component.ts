@@ -6,6 +6,8 @@ import { OfertaModel } from './../shared/oferta.model';
 
 import { OfertasService } from './../ofertas.service';
 
+// import { Describer } from './../util/describer.pipe';
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',

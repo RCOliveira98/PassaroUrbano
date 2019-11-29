@@ -17,7 +17,6 @@ import { OfertasService } from './../ofertas.service';
 export class NavbarComponent implements OnInit, OnDestroy {
 
   public ofertas: Observable<OfertaModel[]>;
-  public ofertasSearch: OfertaModel[];
   public inscricao: Subscription;
   private subject: Subject<string>;
 
@@ -26,9 +25,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.subject = new Subject<string>();
     this.setOfertas();
-    this.inscricao = this.ofertas.subscribe(
-      (ofertas: OfertaModel[]) => this.ofertasSearch = ofertas
-    );
   }
 
   ngOnDestroy() {
@@ -58,11 +54,3 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
 }
-
-/*
-this.ofertas = this.ofertaService.getSearchOffers(search);
-      this.inscricao = this.ofertas.subscribe(
-        (success: OfertaModel[]) => console.log(success),
-        (err: any) => console.log(err)
-      );
-*/

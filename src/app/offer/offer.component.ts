@@ -13,21 +13,18 @@ import { OfertasService } from '../ofertas.service';
 export class OfferComponent implements OnInit {
 
   public currentOffer: OfertaModel;
-  constructor(private roteador: ActivatedRoute,
-              private servOffer: OfertasService) { }
+  constructor(
+    private roteador: ActivatedRoute,
+    private servOffer: OfertasService
+    ) { }
 
   ngOnInit() {
-    const id = this.getParams();
-    return this.servOffer.getOffersById(id).then((response: OfertaModel) => {
-      this.currentOffer = response;
-      console.log(this.currentOffer);
-    })
-    .catch((response: any) => console.log(response));
+    this.roteador.params.subscribe(params => {
+      this.servOffer.getOffersById(params.id).then((response: OfertaModel) => {
+        this.currentOffer = response;
+        console.log(this.currentOffer);
+      })
+      .catch((response: any) => console.log(response));
+    });
   }
-
-  private getParams(): number {
-    const date = 'id';
-    return this.roteador.snapshot.params[date];
-  }
-
 }

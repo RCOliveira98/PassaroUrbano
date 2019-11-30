@@ -33,8 +33,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
     }
   }
 
+  clear() {
+    this.subject.next('');
+  }
+
   mySearchOffer(search: string): void {
-    console.log('pesquisando...');
     if (search.trim() === '') {
       console.error('String vazia!');
     } else {

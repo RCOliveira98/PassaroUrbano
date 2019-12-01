@@ -11,6 +11,7 @@ import { RestaurantComponent } from './restaurant/restaurant.component';
 import { OfferComponent } from './offer/offer.component';
 import { WhereToFindComponent } from './offer/where-to-find/where-to-find.component';
 import { HowToUseComponent } from './offer/how-to-use/how-to-use.component';
+import { PurchaseOrderComponent } from './purchase-order/purchase-order.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -22,7 +23,8 @@ const routes: Routes = [
     {path: '', component: HowToUseComponent}, // default
     {path: 'how-to-use', component: HowToUseComponent},
     {path: 'where-to-find', component: WhereToFindComponent}
-  ]}
+  ]},
+  {path: 'purcharse', component: PurchaseOrderComponent}
 ];
 
 @NgModule({

@@ -17,6 +17,7 @@ import { WhereToFindComponent } from './offer/where-to-find/where-to-find.compon
 // import { OfertasService } from './ofertas.service';
 
 import { Describer } from './util/describer.pipe';
+import { PurchaseOrderComponent } from './purchase-order/purchase-order.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { Describer } from './util/describer.pipe';
     OfferComponent,
     HowToUseComponent,
     WhereToFindComponent,
-    Describer
+    Describer,
+    PurchaseOrderComponent
   ],
   imports: [
     BrowserModule,

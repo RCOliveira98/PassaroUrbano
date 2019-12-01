@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 
 import { OfertasService } from './../../ofertas.service';
 
@@ -17,15 +17,17 @@ export class WhereToFindComponent implements OnInit {
     this.setContent();
   }
 
-  private getParams(): number {
-    const date = 'id';
-    return this.myRoteador.parent.snapshot.params[date];
-  }
-
   private setContent(): void {
-    this.myService.getContentWhereToFind(this.getParams())
+    this.myRoteador.parent.params.subscribe(
+      (parametros: Params) => {
+        this.myService.getContentWhereToFind(parametros.id)
                   .then((resp: string) => this.content = resp)
                   .catch((resp: any) => alert('Erro: ' + resp));
+      }, erro => {
+        console.error(erro);
+        alert('Não foi possivel atualizar o campo onde fica.');
+      }
+    );
   }
 
 

@@ -11,7 +11,7 @@
                     <input #stringSearch type="text" placeholder="Pesquise por ofertas" class='my-form form-control' (keyup)="mySearchOffer(stringSearch.value);">
                     <ul class="list-group">
                         <li class="list-group-item" *ngFor="let offer of ofertas | async">
-                            <a (click)="clear()" [routerLink]="['/offer', offer.id]" routerLinkActive="router-link-active">{{offer.title | describer | uppercase}}</a>
+                            <a [routerLink]="['/offer', offer.id]" routerLinkActive="router-link-active" (click)='clear()'>{{offer.title | describer | uppercase}}</a>
                         </li>
                     </ul>
                 </div>

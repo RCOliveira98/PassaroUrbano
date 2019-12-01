@@ -34,7 +34,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   clear() {
-    this.subject.next('');
+    this.ngOnDestroy();
+    this.ngOnInit();
   }
 
   mySearchOffer(search: string): void {

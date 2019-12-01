@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 
 import { OfertasService } from './../../ofertas.service';
 
@@ -15,16 +15,18 @@ export class HowToUseComponent implements OnInit {
   public promess: Promise<object>;
 
   constructor(private roteador: ActivatedRoute, private myService: OfertasService) {}
-  // retorna o parâmetro'id' da url
-  private retrievesParameters(): number {
-    const info = 'id';
-    return this.roteador.parent.snapshot.params[info];
-  }
 
   ngOnInit() {
-    return this.myService.getContentHowToUse(this.retrievesParameters())
+    this.roteador.parent.params.subscribe(
+      (parametros: Params) => {
+        this.myService.getContentHowToUse(parametros.id)
                   .then((response: string) => this.content = response)
                   .catch((response: any) => alert('Erro: ' + response));
+      }, erro => {
+        console.error(erro);
+        alert('Não foi possível atualizar dados do como usar!');
+      }
+    );
   }
 
 }

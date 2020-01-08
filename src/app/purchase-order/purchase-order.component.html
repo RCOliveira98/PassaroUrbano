@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="ordem-compra">
+    <div *ngIf="!pedido.id" class="ordem-compra">
         <form novalidate class="mb-5">
 
             <h5>Sua Compra</h5>
@@ -99,5 +99,9 @@
             </div>
             <button [disabled]="!endIsValid || !fPagIsValid || !numIsValid" type="button" class="btn btn-primary btn-lg" (click)="confirmarCompra()">Cofirmar compra</button>
         </form>
+    </div>
+
+    <div *ngIf="pedido.id">
+        <app-made-purchase [order]="pedido"></app-made-purchase>
     </div>
 </div>

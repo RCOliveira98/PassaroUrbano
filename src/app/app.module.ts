@@ -19,6 +19,7 @@ import { WhereToFindComponent } from './offer/where-to-find/where-to-find.compon
 
 import { Describer } from './util/describer.pipe';
 import { PurchaseOrderComponent } from './purchase-order/purchase-order.component';
+import { MadePurchaseComponent } from './purchase-order/made-purchase/made-purchase.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { PurchaseOrderComponent } from './purchase-order/purchase-order.componen
     HowToUseComponent,
     WhereToFindComponent,
     Describer,
-    PurchaseOrderComponent
+    PurchaseOrderComponent,
+    MadePurchaseComponent
   ],
   imports: [
     BrowserModule,

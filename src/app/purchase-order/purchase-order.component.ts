@@ -26,12 +26,13 @@ export class PurchaseOrderComponent implements OnInit {
   constructor(private servPurchase: PurchaseService) { }
 
   ngOnInit() {
+    this.pedido = new Pedido();
   }
 
   confirmarCompra() {
     this.setPedido();
     this.subscription = this.servPurchase.efetivarCompra(this.pedido).subscribe(
-      success => console.log(success),
+      success => this.pedido = success,
       erro => console.error(`Erro ao confirmar compra: ${erro}`)
     );
   }
@@ -53,7 +54,6 @@ export class PurchaseOrderComponent implements OnInit {
   }
 
   private setPedido() {
-    this.pedido = new Pedido();
     this.pedido.endereco = this.endereco;
     this.pedido.numero = this.numero;
     this.pedido.complemento = this.complemento;

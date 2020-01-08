@@ -1,6 +1,6 @@
 <div class="container">
     <div class="ordem-compra">
-        <form novalidate>
+        <form novalidate class="mb-5">
 
             <h5>Sua Compra</h5>
             <hr />
@@ -72,7 +72,7 @@
                 <div class="form-group col-md-2">
                     <input type="text" (input)="validarNumero()" name="numero" [(ngModel)]="numero" class="form-control {{ numIsValid ? 'is-valid' : 'is-invalid' }}" placeholder="Número" autocomplete="off" minlength="1" required>
                     <br />
-                    <small class="form-text text-muted">Ok</small>
+                    <small *ngIf="numIsValid" class="form-text text-muted">Ok</small>
                 </div>
 
                 <div class="form-group col-md-4">
@@ -94,12 +94,10 @@
             <option>Débito</option>
           </select>
 
-                    <div class="invalid-feedback">Selecione uma forma de pagamento</div>
+                    <div *ngIf="!fPagIsValid" class="invalid-feedback">Selecione uma forma de pagamento</div>
                 </div>
             </div>
-
-            <hr />
-            <button type="submit" class="btn btn-primary btn-lg">Cofirmar compra</button>
+            <button [disabled]="!endIsValid || !fPagIsValid || !numIsValid" type="button" class="btn btn-primary btn-lg" (click)="confirmarCompra()">Cofirmar compra</button>
         </form>
     </div>
 </div>

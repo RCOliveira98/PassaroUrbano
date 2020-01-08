@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="row">
+        <div class="col d-flex justify-content-center">
+            <h3 class="msg-success">Compra realizada com sucesso!</h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col d-flex justify-content-center">
+            <p>O número do seu pedido é <b> {{ order?.id }} </b></p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col d-flex justify-content-center">
+            <p>Endereço de entrega: {{order?.endereco}}, {{order?.numero}}. Complemento: {{ order?.complemento }}</p>
+        </div>
+    </div>
+
+</div>

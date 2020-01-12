@@ -1,0 +1,13 @@
+.form-po {
+  background: #FAFAFA;
+  padding: 20px;
+  border-bottom: solid 1px #F0F0F0;
+}
+
+.ng-invalid.ng-touched:not(form) {
+    border: 1px solid red;
+}
+
+.ng-valid.ng-touched:not(form) {
+  border: 1px solid blue;
+}

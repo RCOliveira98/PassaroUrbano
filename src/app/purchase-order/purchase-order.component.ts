@@ -1,7 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { PurchaseService } from './purchase.service';
-import { Pedido } from '../shared/pedido.model';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { NgForm } from '@angular/forms'
+
+import { PurchaseService } from './purchase.service';
+
+import { Pedido } from '../shared/pedido.model';
+
 
 @Component({
   selector: 'app-purchase-order',
@@ -10,6 +14,7 @@ import { Subscription } from 'rxjs';
 })
 export class PurchaseOrderComponent implements OnInit {
 
+  @ViewChild('formulario') form: NgForm;
   endereco: string;
   numero: string;
   complemento: string;
@@ -30,11 +35,14 @@ export class PurchaseOrderComponent implements OnInit {
   }
 
   confirmarCompra() {
+    console.log(this.form);
+    /*
     this.setPedido();
     this.subscription = this.servPurchase.efetivarCompra(this.pedido).subscribe(
       success => this.pedido = success,
       erro => console.error(`Erro ao confirmar compra: ${erro}`)
     );
+    */
   }
 
   validarEndereco() {

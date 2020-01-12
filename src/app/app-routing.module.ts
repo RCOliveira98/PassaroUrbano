@@ -24,7 +24,7 @@ const routes: Routes = [
     {path: 'how-to-use', component: HowToUseComponent},
     {path: 'where-to-find', component: WhereToFindComponent}
   ]},
-  {path: 'purcharse', component: PurchaseOrderComponent}
+  {path: 'purchase', component: PurchaseOrderComponent}
 ];
 
 @NgModule({

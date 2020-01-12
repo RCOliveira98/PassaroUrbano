@@ -1,11 +1,11 @@
 <div class="container">
     <div *ngIf="!pedido.id" class="ordem-compra">
-        <form novalidate class="mb-5">
+        <form novalidate class="mb-5" #formulario="ngForm" (ngSubmit)="confirmarCompra(formulario)">
 
             <h5>Sua Compra</h5>
             <hr />
 
-            <div class="form-row" style="background: #FAFAFA; padding: 20px; border-bottom: solid 1px #F0F0F0">
+            <div class="form-row form-po">
                 <div class="form-group col-sm-1">
                     <img src="/assets/ofertas/1/img1.jpg" class="img-fluid">
                 </div>
@@ -65,18 +65,17 @@
             <div class="form-row">
 
                 <div class="form-group col-md-6">
-                    <input type="text" name="endereco" [(ngModel)]="endereco" class="form-control {{ endIsValid ? 'is-valid' : 'is-invalid'}}" (input)="validarEndereco()" placeholder="No mínimo 03 caracteres" autocomplete="off" minlength="5" required>
+                    <input type="text" name="endereco" [(ngModel)]="endereco" class="form-control {{ endIsValid ? '' : ''}}" (input)="validarEndereco()" placeholder="No mínimo 03 caracteres" autocomplete="off" minlength="5" required>
                     <div *ngIf="!endIsValid" class="invalid-feedback">Endereço inválido</div>
                 </div>
 
                 <div class="form-group col-md-2">
-                    <input type="text" (input)="validarNumero()" name="numero" [(ngModel)]="numero" class="form-control {{ numIsValid ? 'is-valid' : 'is-invalid' }}" placeholder="Número" autocomplete="off" minlength="1" required>
+                    <input type="text" (input)="validarNumero()" name="numero" [(ngModel)]="numero" class="form-control {{ numIsValid ? '' : '' }}" placeholder="Número" autocomplete="off" minlength="1" required>
                     <br />
-                    <small *ngIf="numIsValid" class="form-text text-muted">Ok</small>
                 </div>
 
                 <div class="form-group col-md-4">
-                    <input type="text" (input)="validarNumero()" name="complemento" [(ngModel)]="complemento" class="form-control {{ cplIsValid ? 'is-valid' : '' }}" placeholder="Complemento" autocomplete="off">
+                    <input type="text" (input)="validarNumero()" name="complemento" [(ngModel)]="complemento" class="form-control {{ cplIsValid ? '' : '' }}" placeholder="Complemento" autocomplete="off">
                 </div>
 
             </div>
@@ -88,7 +87,7 @@
             <div class="form-row">
 
                 <div class="form-group col-md-3">
-                    <select (blur)="validarFormaPagamento()" name="formaPagamento" [(ngModel)]="formaPagamento" class="form-control {{ fPagIsValid ? 'is-valid' : 'is-invalid' }}">
+                    <select (blur)="validarFormaPagamento()" name="formaPagamento" [(ngModel)]="formaPagamento" class="form-control {{ fPagIsValid ? '' : '' }}">
             <option>Selecione uma opção</option>
             <option>Dinheiro</option>
             <option>Débito</option>
@@ -97,7 +96,7 @@
                     <div *ngIf="!fPagIsValid" class="invalid-feedback">Selecione uma forma de pagamento</div>
                 </div>
             </div>
-            <button [disabled]="!endIsValid || !fPagIsValid || !numIsValid" type="button" class="btn btn-primary btn-lg" (click)="confirmarCompra()">Cofirmar compra</button>
+            <button [disabled]="!endIsValid || !fPagIsValid || !numIsValid" type="submit" class="btn btn-primary btn-lg">Cofirmar compra</button>
         </form>
     </div>
 

@@ -1,106 +1,139 @@
+
 <div class="container">
-    <div *ngIf="!pedido.id" class="ordem-compra">
-        <form novalidate class="mb-5" #formulario="ngForm" (ngSubmit)="confirmarCompra(formulario)">
+  <div *ngIf="!saleMade" class="ordem-compra">
+    <form [formGroup]="formComponent" novalidate (ngSubmit)="confirmarCompra()">
 
-            <h5>Sua Compra</h5>
-            <hr />
+      <h5>Sua Compra</h5>
+      <hr />
 
-            <div class="form-row form-po">
-                <div class="form-group col-sm-1">
-                    <img src="/assets/ofertas/1/img1.jpg" class="img-fluid">
-                </div>
-                <div class="form-group col-sm-6">
-                    Super Burger
-                    <br /> Rodízio de Mini-hambúrger com opção de entrada.
-                </div>
+      <div class="form-row" style="background: #FAFAFA; padding: 20px; border-bottom: solid 1px #F0F0F0">
+        <div class="form-group col-sm-1">
+          <img src="/assets/ofertas/1/img1.jpg" class="img-fluid">
+        </div>
+        <div class="form-group col-sm-6">
+          Super Burger
+          <br />
+          Rodízio de Mini-hambúrger com opção de entrada.
+        </div>
 
-                <div>
-                    <div class="row">
-                        <div class="col">
-                            <button type="button" class="btn btn-link">-</button> 1
-                            <button type="button" class="btn btn-link">+</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group col-sm-3 d-flex justify-content-end">
-                    29.90
-                </div>
+        <div>
+          <div class="row">
+            <div class="col">
+              <button type="button" class="btn btn-link">-</button>
+              1
+              <button type="button" class="btn btn-link">+</button>
             </div>
+          </div>
+        </div>
 
-            <div class="form-row" style="background: #FAFAFA; padding: 20px; border-bottom: solid 1px #F0F0F0">
-                <div class="form-group col-sm-1">
-                    <img src="/assets/ofertas/4/img1.jpg" class="img-fluid">
-                </div>
-                <div class="form-group col-sm-6">
-                    Estância das águas
-                    <br /> Diversão garantida com piscinas, trilhas e muito mais.
-                </div>
+        <div class="form-group col-sm-3 d-flex justify-content-end">
+          29.90
+        </div>
+      </div>
 
-                <div>
-                    <div class="row">
-                        <div class="col">
-                            <button type="button" class="btn btn-link">-</button> 1
-                            <button type="button" class="btn btn-link">+</button>
-                        </div>
-                    </div>
-                </div>
+      <div class="form-row" style="background: #FAFAFA; padding: 20px; border-bottom: solid 1px #F0F0F0">
+        <div class="form-group col-sm-1">
+          <img src="/assets/ofertas/4/img1.jpg" class="img-fluid">
+        </div>
+        <div class="form-group col-sm-6">
+          Estância das águas
+          <br />
+          Diversão garantida com piscinas, trilhas e muito mais.
+        </div>
 
-                <div class="form-group col-sm-3 d-flex justify-content-end">
-                    31.90
-                </div>
+        <div>
+          <div class="row">
+            <div class="col">
+              <button type="button" class="btn btn-link">-</button>
+              1
+              <button type="button" class="btn btn-link">+</button>
             </div>
+          </div>
+        </div>
 
-            <div class="form-row">
-                <div class="form-group col d-flex justify-content-end">
-                    <h4>Total do pedido: 61.80</h4>
-                </div>
-            </div>
-            <br />
+        <div class="form-group col-sm-3 d-flex justify-content-end">
+          31.90
+        </div>
+      </div>
 
+      <div class="form-row">
+        <div class="form-group col d-flex justify-content-end">
+          <h4>Total do pedido: 61.80</h4>
+        </div>
+      </div>
+      <br />
 
-            <h5>Dados de entrega</h5>
-            <hr />
+      <h5>Dados de entrega</h5>
+      <hr />
 
-            <div class="form-row">
+      <div class="form-row">
 
-                <div class="form-group col-md-6">
-                    <input type="text" name="endereco" [(ngModel)]="endereco" class="form-control {{ endIsValid ? '' : ''}}" (input)="validarEndereco()" placeholder="No mínimo 03 caracteres" autocomplete="off" minlength="5" required>
-                    <div *ngIf="!endIsValid" class="invalid-feedback">Endereço inválido</div>
-                </div>
+        <div class="form-group col-md-6">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Endereço"
+            formControlName="endereco"
+            autocomplete="off"
+          >
+          <small *ngIf="showMsgEnderecoValid()" class="form-text text-success">Ok</small>
+          <small *ngIf="showMsgEnderecoInvalid()" class="form-text text-danger">Inválido</small>
+        </div>
 
-                <div class="form-group col-md-2">
-                    <input type="text" (input)="validarNumero()" name="numero" [(ngModel)]="numero" class="form-control {{ numIsValid ? '' : '' }}" placeholder="Número" autocomplete="off" minlength="1" required>
-                    <br />
-                </div>
+        <div class="form-group col-md-2">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Número"
+            formControlName="numero"
+            autocomplete="off"
+          >
+          <small *ngIf="showMsgNumeroValid()" class="form-text text-success">Ok</small>
+          <small *ngIf="showMsgNumeroInvalid()" class="form-text text-danger">Inválido</small>
+        </div>
 
-                <div class="form-group col-md-4">
-                    <input type="text" (input)="validarNumero()" name="complemento" [(ngModel)]="complemento" class="form-control {{ cplIsValid ? '' : '' }}" placeholder="Complemento" autocomplete="off">
-                </div>
+        <div class="form-group col-md-4">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Complemento"
+            formControlName="complemento"
+            autocomplete="off"
+          >
+        </div>
 
-            </div>
-            <br />
+      </div>
+      <br />
 
-            <h5>Dados de pagamento</h5>
-            <hr />
+      <h5>Dados de pagamento</h5>
+      <hr />
 
-            <div class="form-row">
+      <div class="form-row">
 
-                <div class="form-group col-md-3">
-                    <select (blur)="validarFormaPagamento()" name="formaPagamento" [(ngModel)]="formaPagamento" class="form-control {{ fPagIsValid ? '' : '' }}">
-            <option>Selecione uma opção</option>
-            <option>Dinheiro</option>
-            <option>Débito</option>
+        <div class="form-group col-md-3">
+          <select
+            class="form-control"
+            formControlName="formaPagamento"
+          >
+            <option value="">Selecione uma opção</option>
+            <option value="dinheiro">Dinheiro</option>
+            <option value="debito">Débito</option>
           </select>
+          <small *ngIf="showMsgFormPagValid()" class="form-text text-success">Ok</small>
+          <small *ngIf="showMsgFormPagInvalid()" class="form-text text-danger">Inválido</small>
+        </div>
+      </div>
 
-                    <div *ngIf="!fPagIsValid" class="invalid-feedback">Selecione uma forma de pagamento</div>
-                </div>
-            </div>
-            <button [disabled]="!endIsValid || !fPagIsValid || !numIsValid" type="submit" class="btn btn-primary btn-lg">Cofirmar compra</button>
-        </form>
-    </div>
+      <hr />
+      <button
+        type="submit"
+        class="btn btn-primary btn-lg mb-5"
+        [disabled]="disabledBtn()"
+      >Cofirmar compra</button>
+    </form>
+  </div>
 
-    <div *ngIf="pedido.id">
-        <app-made-purchase [order]="pedido"></app-made-purchase>
-    </div>
+  <div *ngIf="saleMade">
+    <app-made-purchase [order]="newPedido"></app-made-purchase>
+  </div>
 </div>

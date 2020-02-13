@@ -11,3 +11,13 @@
 .ng-valid.ng-touched:not(form) {
   border: 1px solid blue;
 }
+
+.invalid-feedback {
+  background-color: #7e2a2a;
+  color: blue;
+}
+
+.valid-feedback {
+  background-color: rgb(24, 181, 63)n;
+  color: white;
+}

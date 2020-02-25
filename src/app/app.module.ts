@@ -1,4 +1,3 @@
-
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
@@ -16,6 +15,8 @@ import { HowToUseComponent } from './offer/how-to-use/how-to-use.component';
 import { WhereToFindComponent } from './offer/where-to-find/where-to-find.component';
 
 // import { OfertasService } from './ofertas.service';
+import { UtilsService } from './utils.service';
+import { ShoppingCartService } from './shopping-cart.service';
 
 import { Describer } from './util/describer.pipe';
 import { PurchaseOrderComponent } from './purchase-order/purchase-order.component';
@@ -43,6 +44,7 @@ import { MadePurchaseComponent } from './purchase-order/made-purchase/made-purch
     ReactiveFormsModule,
     AppRoutingModule
   ],
+  providers: [UtilsService, ShoppingCartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

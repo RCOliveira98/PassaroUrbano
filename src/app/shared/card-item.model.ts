@@ -1,8 +1,11 @@
 export class CardItem {
-  id: number;
-  img: object;
-  title: string;
-  description: string;
-  value: number;
-  qtd: number;
+
+  constructor(
+    public id: number,
+    public img: object,
+    public title: string,
+    public description: string,
+    public value: number,
+    public qtd: number
+    ) {}
 }

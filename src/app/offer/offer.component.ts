@@ -27,6 +27,7 @@ export class OfferComponent implements OnInit {
 
   addItemCart() {
     this.servShoppingCart.insertItem(this.currentOffer);
+    alert('Item inserido no carrinho de compras!');
   }
 
   private init() {

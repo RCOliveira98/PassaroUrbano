@@ -39,6 +39,7 @@ export class PurchaseOrderComponent implements OnInit {
         success => {
           this.newPedido = success;
           this.saleMade = true;
+          this.servShoppingCart.clearList();
         },
         erro => console.error(`Erro ao confirmar compra: ${erro}`)
       );
@@ -135,6 +136,7 @@ export class PurchaseOrderComponent implements OnInit {
     this.newPedido.numero = this.formComponent.value.numero;
     this.newPedido.complemento = this.formComponent.value.complemento;
     this.newPedido.formaPagamento = this.formComponent.value.formaPagamento;
+    this.newPedido.listItens = this.listItens;
   }
 
   private getItens() {

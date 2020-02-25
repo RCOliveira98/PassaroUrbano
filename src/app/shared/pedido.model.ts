@@ -1,3 +1,5 @@
+import { CardItem } from './card-item.model';
+
 export class Pedido {
   id: number;
   endereco: string;
@@ -5,6 +7,7 @@ export class Pedido {
   complemento: string;
   formaPagamento: string;
   valorTotal: number;
+  listItens: CardItem[];
 
   constructor(p?: Pedido) {
     if (p) {
@@ -16,6 +19,7 @@ export class Pedido {
       this.complemento = p.complemento;
       this.formaPagamento = p.formaPagamento;
       this.valorTotal = p.valorTotal;
+      this.listItens = p.listItens;
     }
   }
 }

@@ -45,6 +45,10 @@ export class ShoppingCartService {
     }
   }
 
+  clearList() {
+    this.listItens = [];
+  }
+
   private convert(offer: OfertaModel): CardItem {
     const item = new CardItem(
       offer.id,

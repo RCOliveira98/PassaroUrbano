@@ -21,3 +21,9 @@
   background-color: rgb(24, 181, 63)n;
   color: white;
 }
+
+.row-item {
+  background: #FAFAFA;
+  padding: 20px;
+  border-bottom: solid 1px #F0F0F0;
+}

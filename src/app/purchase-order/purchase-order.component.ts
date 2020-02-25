@@ -1,11 +1,12 @@
-import { Pedido } from './../shared/pedido.model';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
 import { PurchaseService } from './purchase.service';
-import { min } from 'rxjs/operators';
+import { ShoppingCartService } from '../shopping-cart.service';
 
+import { CardItem } from './../shared/card-item.model';
+import { Pedido } from './../shared/pedido.model';
 
 @Component({
   selector: 'app-purchase-order',
@@ -16,14 +17,19 @@ export class PurchaseOrderComponent implements OnInit {
   // inscricao
   subscription: Subscription;
   formComponent: FormGroup;
+  listItens: CardItem[];
   newPedido: Pedido;
   saleMade: boolean;
 
-  constructor(private servPurchase: PurchaseService) { }
+  constructor(
+    private servPurchase: PurchaseService,
+    private servShoppingCart: ShoppingCartService
+    ) { }
 
   ngOnInit() {
     this.saleMade = false;
     this.resetForm();
+    this.getItens();
   }
 
   confirmarCompra() {
@@ -65,8 +71,33 @@ export class PurchaseOrderComponent implements OnInit {
     return this.formComponent.get('formaPagamento').invalid && this.formComponent.get('formaPagamento').touched;
   }
 
+  showTotalSales(): number {
+    return this.listItens ? this.calculateTotalSales() : 0;
+  }
+
+  private calculateTotalSales(): number {
+    let total = 0;
+    this.listItens.forEach(i => {
+      total += (i.value * i.qtd);
+    })
+    return total;
+  }
+
   disabledBtn(): boolean {
     return this.formComponent.invalid;
+  }
+
+  showCart(): boolean {
+    return this.listItens.length > 0;
+  }
+
+  plus(id: number) {
+    this.servShoppingCart.plusQtd(id);
+    // this.getItens();
+  }
+
+  minus(id: number) {
+    this.servShoppingCart.minusQtd(id);
   }
 
   private resetForm() {
@@ -104,6 +135,10 @@ export class PurchaseOrderComponent implements OnInit {
     this.newPedido.numero = this.formComponent.value.numero;
     this.newPedido.complemento = this.formComponent.value.complemento;
     this.newPedido.formaPagamento = this.formComponent.value.formaPagamento;
+  }
+
+  private getItens() {
+    this.listItens = this.servShoppingCart.showItens();
   }
 
 }
